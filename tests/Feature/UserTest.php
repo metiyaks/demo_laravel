@@ -18,5 +18,13 @@ class UserTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertStatus(200);
+        
+        $response = $this->get('/users/profile');
+
+        $response->assertStatus(200);
+        
+        $response = $this->get('/export-users');
+
+        $response->assertStatus(200);
     }
 }
