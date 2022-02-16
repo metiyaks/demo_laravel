@@ -11,13 +11,15 @@
 |
  */
 
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+//Route::get('/', function () {
+//    return view('login');
+//});
+//Route::get('/login', function () {
+//    return view('login');
+//})->name('login');
 
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('index');
+Route::get('/login', 'App\Http\Controllers\HomeController@index')->name('index');
 Route::get('/dashboard', 'App\Http\Controllers\UsersController@dashboard')->name('homepage');
 Route::get('/users/childs/{type}', 'App\Http\Controllers\UsersController@index')->name('users.index');
 Route::get('/users/add', 'App\Http\Controllers\UsersController@add')->name('users.add');

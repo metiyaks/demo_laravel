@@ -8,15 +8,16 @@ use App\Exports\ExportUser;
 class UsersController extends Controller
 {
 
-    public function dashboard()
-    {
-        return view('dashboard');
-    }
     public function index($type = null)
     {
         
         return view('users.index', ['type' => $type]);
     }
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+    
     public function profile($type = null)
     {
         return view('users.profile', ['type' => $type]);
@@ -44,6 +45,6 @@ class UsersController extends Controller
     }
 
     public function exportUsers(Request $request){
-        return Excel::download(new ExportUser, 'users.xlsx');
+        return Excel::download(new ExportUser, 'users.csv');
     }
 }

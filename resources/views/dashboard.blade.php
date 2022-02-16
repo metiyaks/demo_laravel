@@ -468,7 +468,7 @@
         var name = $(this).attr('data-name');
        
         //var url = "{{ url('/api/users/createWPAccount') }}";
-        //var url = "http://localhost/custDemo/wp-content/themes/twentytwenty/customdemo.php"; 
+        //var url = "http://localhost/custDemo/wp-content/plugins/import-users-from-csv/customdemo.php"; 
         var url = "http://localhost/custDemo/customdemo.php"; 
         $.ajax({
             type: 'POST',

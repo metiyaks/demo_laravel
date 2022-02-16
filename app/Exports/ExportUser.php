@@ -4,32 +4,34 @@ namespace App\Exports;
 
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
 use Illuminate\Support\Facades\Crypt;
 use Hash;
-class ExportUser implements FromCollection
+use Illuminate\Support\Facades\DB;
+class ExportUser implements FromCollection, WithHeadings
 {
+    
+    
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-//        $data = array();
-//        $data = User::all()->toArray();
-//        
-//        
-//        if(!empty($data)) {
-//            foreach($data as $k=>$v) {
-//                $v['password'] = Hash::check($v['password'], $v['password'], []);
-//                
-//                echo '<pre>';
-//                print_r($v);
-//                die;
-//            }
-//        }
-//        echo '<pre>';
-//        print_r($data);
-//        die;
         //return User::all();
-        return User::select('name','email')->where('users.u_role', '=', 2)->get();
+        return User::select('email', 'email as e','name')->where('users.u_role', '=', 2)->get();
     }
+    
+    public function headings(): array
+    {
+        return [
+            'user_login',
+            'user_email',
+            'display_name',
+
+        ];
+    }
+
+
 }
